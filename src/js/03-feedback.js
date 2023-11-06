@@ -9,7 +9,7 @@ const LOCAL_KEY = 'feedback-form-state';
 refs.form.addEventListener('input', throttle(onInput, 500));
 refs.form.addEventListener('submit', onSubmit);
 
-let data = JSON.parse(localStorage.getItem(LOCAL_KEY)) ?? {};
+let data = JSON.parse(localStorage.getItem(LOCAL_KEY)) || {};
 
 function onInput(event) {
   data[event.target.name] = event.target.value;
@@ -18,11 +18,11 @@ function onInput(event) {
 
 function onSubmit(event) {
   event.preventDefault();
-  if (!email.value || !textarea.value) {
+  if (!refs.email.value || !refs.textarea.value) {
     alert('Будь ласка, заповніть усі поля!');
   } else {
-    console.log(`email: ${email.value} message:
-          ${textarea.value}`);
+    console.log(`email: ${refs.email.value} message:
+          ${refs.textarea.value}`);
     localStorage.removeItem(LOCAL_KEY);
     event.currentTarget.reset();
     data = {};
