@@ -21,10 +21,9 @@ function onSubmit(event) {
   if (!refs.email.value || !refs.textarea.value) {
     alert('Будь ласка, заповніть усі поля!');
   } else {
-    console.log(`email: ${refs.email.value} message:
-          ${refs.textarea.value}`);
     localStorage.removeItem(LOCAL_KEY);
     event.currentTarget.reset();
+    console.log(data);
     data = {};
   }
 }
